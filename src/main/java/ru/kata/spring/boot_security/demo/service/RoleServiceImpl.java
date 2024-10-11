@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-@Transactional(readOnly = true)
 public class RoleServiceImpl implements RoleService {
 
     private final RoleRepository roleRepository;
@@ -20,11 +19,13 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Set<Role> getAllRoles() {
         return new HashSet<>(roleRepository.findAll());
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Role findRoleById(Long id) {
         return roleRepository.getById(id);
     }
